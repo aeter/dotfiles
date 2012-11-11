@@ -31,8 +31,11 @@ set swapfile
 
 "Shows what is being typed as a command
 set showcmd
+
+"Syntax highlighting
 filetype on
 filetype plugin indent on
+syntax enable
 
 "Spaces instead of tabs
 set expandtab
@@ -42,13 +45,11 @@ set smarttab
 set wildmenu
 set wildmode=list:longest,full
 
-"Bring the searched word to middle of screen
+"Center on the line the searched word is found
 :nmap n nzz
 :nmap N Nzz
 :nmap * *zz
 :nmap # #zz
-:nmap g* g*zz 
-:nmap g# g#zz
 
 "Toggle line numbers and fold column for easy copying"
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
@@ -79,5 +80,4 @@ set shiftwidth=4
 set backspace=4
 set textwidth=80
 set guifont=Menlo:h14
-syntax enable
 set nowrap
