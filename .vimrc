@@ -1,6 +1,5 @@
-syntax on
-
 set nocompatible
+syntax on
 set number
 set ruler
 
@@ -53,9 +52,6 @@ set wildmode=list:longest,full
 
 "Toggle line numbers and fold column for easy copying"
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
-
-" map Ctrl-Space for autocompletion in insert mode:
-inoremap <Nul> <C-p>
 
 " tab navigation like firefox
 :nmap <A-Right> :tabnext<CR>
