@@ -42,8 +42,6 @@ set smarttab
 set wildmenu
 set wildmode=list:longest,full
 
-set backspace=2
-
 "Bring the searched word to middle of screen
 :nmap n nzz
 :nmap N Nzz
@@ -74,10 +72,11 @@ autocmd BufRead,BufReadPre,BufNewFile SConscript set filetype=python
 au BufNewFile,BufRead,BufReadPre *.djhtml set filetype=javascript
 
 colorscheme jellybeans
+set autoindent
 set smartindent
 set tabstop=4
 set shiftwidth=4
-set autoindent
+set backspace=4
 set textwidth=80
 set guifont=Menlo:h14
 syntax enable
