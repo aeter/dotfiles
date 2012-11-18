@@ -68,6 +68,9 @@ autocmd BufRead,BufReadPre,BufNewFile SConscript set filetype=python
 "some django files
 au BufNewFile,BufRead,BufReadPre *.djhtml set filetype=javascript
 
+"Racket
+au BufReadPost *.rkt,*.rktl set filetype=scheme
+
 colorscheme jellybeans
 set autoindent
 set smartindent
