@@ -14,9 +14,6 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-"cd to the dir the current file is opened
-set autochdir
-
 "Search
 set hlsearch
 set incsearch
@@ -71,12 +68,14 @@ au BufNewFile,BufRead,BufReadPre *.djhtml set filetype=javascript
 "Racket
 au BufReadPost *.rkt,*.rktl set filetype=scheme
 
+"Processing
+au BufReadPost *.pde set filetype=java
+
 colorscheme jellybeans
 set autoindent
 set smartindent
 set tabstop=4
 set shiftwidth=4
-set backspace=4
 set textwidth=80
 set guifont=Menlo:h14
 set nowrap
