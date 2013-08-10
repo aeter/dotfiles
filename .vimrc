@@ -20,10 +20,13 @@ set incsearch
 set ignorecase
 set smartcase
 
-"Backup
+"Encryption -> enable with ':X', disable with 'set key='
+"Vim before 7.3 doesn't support blowfish
+set cm=blowfish
+"No Backup
 set nobackup
 set nowritebackup
-set swapfile
+set noswapfile
 
 "Shows what is being typed as a command
 set showcmd
@@ -79,3 +82,4 @@ set shiftwidth=4
 set textwidth=80
 set guifont=Menlo:h14
 set nowrap
+
