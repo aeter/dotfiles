@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+do_encrypt() {
+    echo "Encrypting $1 ..."
+    cd `dirname "$1"`
+    tar c `basename "$1"` | \
+        openssl enc -aes-256-cbc -a -salt -e > `basename "$1"`.enc
+}
+
+do_decrypt() {
+    echo "Decrypting $1 ..."
+    cd `dirname "$1"`
+    openssl enc -aes-256-cbc -a -d < `basename "$1"` | \
+        tar x
+}
+
+while getopts "e:d:" opt; do
+    case "$opt" in
+        e  ) do_encrypt $OPTARG ;;
+        d  ) do_decrypt $OPTARG ;;
+        \? ) echo "Invalid option: - $OPTARG" >&2 ;;
+    esac
+done
