@@ -75,13 +75,13 @@ au BufReadPost *.rkt,*.rktl set filetype=scheme
 au BufReadPost *.pde set filetype=java
 
 "Python specific indentation
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 "Ruby specific indentation
-autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 "Scheme specific indentation
-autocmd Filetype scheme setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype scheme setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 colorscheme jellybeans
 set autoindent
