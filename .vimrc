@@ -61,26 +61,18 @@ nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 :nmap <C-t> :tabnew<CR>
 :imap <C-t> <Esc>:tabnew<CR>
 
-"scons files:
-autocmd BufRead,BufReadPre,BufNewFile SConstruct set filetype=python
-autocmd BufRead,BufReadPre,BufNewFile SConscript set filetype=python
+"treat these file extensions as language specific
+au BufRead,BufNewFile SConstruct set filetype=python   "Scons
+au BufRead,BufNewFile SConscript set filetype=python   "Scons
+au BufRead,BufNewFile *.djhtml set filetype=javascript "Django
+au BufRead,BufNewFile *.rkt,*.rktl set filetype=scheme "Racket
+au BufRead,BufNewFile *.pde set filetype=java          "Processing
+au BufRead,BufNewFile *.erb,*.erb.html set filetype=ruby "Rails
+au BufRead,BufNewFile *.pp set filetype=ruby           "Puppet
 
-"some django files
-au BufNewFile,BufRead,BufReadPre *.djhtml set filetype=javascript
-
-"Racket
-au BufReadPost *.rkt,*.rktl set filetype=scheme
-
-"Processing
-au BufReadPost *.pde set filetype=java
-
-"Python specific indentation
+"language specific indentation
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4
-
-"Ruby specific indentation
 autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
-
-"Scheme specific indentation
 autocmd Filetype scheme setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 colorscheme jellybeans
@@ -91,4 +83,3 @@ set shiftwidth=4
 set textwidth=80
 set guifont=Menlo:h14
 set nowrap
-
