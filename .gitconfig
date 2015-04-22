@@ -14,16 +14,14 @@
     added = yellow
     changed = green
     untracked = cyan
-
 [alias]
     st = status --untracked-files=no
     df = diff --name-only
     los = log --stat
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-
     # Show files ignored by git
     ign = ls-files -o -i --exclude=standard
-
     # git datetag command
     datetag = tag `date "+%Y%m%d%H%M"`
-
+[core]
+    editor = vim
