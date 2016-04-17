@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+
+# Make sure the path starts with a '/', relative paths break dst=...
+function exit_on_relative_path() { [[ "${1}" = /* ]] || (echo "Error: specify absolute path for ${1}"; exit 1) }
+exit_on_relative_path "${1}"
+
+CODEC_OPTIONS="vcodec=mp4v,scale=1,fps=24,acodec=mp3,channels=1,soverlay"
+FILE_OPTIONS="dst=${1}-transcoded.avi,no-overwrite"
+
+# freetype-rel-fontsize is 20 (Smaller), 18 (Small), 16 (Normal), 12 (Large)
+time open \
+   -W \
+   -g \
+   -n \
+   -a vlc "$1" --args \
+       --sout '#transcode{'"${CODEC_OPTIONS}"'}:file{'"${FILE_OPTIONS}"'}' \
+       --freetype-rel-fontsize=12 \
+       --no-repeat \
+       --no-loop \
+       --play-and-exit
