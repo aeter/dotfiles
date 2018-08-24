@@ -5,13 +5,13 @@ do_encrypt() {
     echo "Encrypting $1 ..."
     cd `dirname "$1"`
     tar c `basename "$1"` | \
-        openssl enc -aes-256-cbc -a -salt -e > `basename "$1"`.enc
+        openssl enc -aes-256-cbc -a -salt -e -md md5 > `basename "$1"`.enc
 }
 
 do_decrypt() {
     echo "Decrypting $1 ..."
     cd `dirname "$1"`
-    openssl enc -aes-256-cbc -a -d < `basename "$1"` | \
+    openssl enc -aes-256-cbc -a -d -md md5 < `basename "$1"` | \
         tar x
 }
 
