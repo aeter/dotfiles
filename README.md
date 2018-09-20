@@ -1,1 +1,1 @@
-```$ ansible-playbook ./dotfiles_deploy.yml --ask-sudo-pass```
+```$ ansible-playbook ./dotfiles_deploy.yml --ask-sudo-pass -v```

@@ -1,4 +1,4 @@
-# run with ansible-playbook ./dotfiles_deploy.yml --ask-sudo-pass
+# run with ansible-playbook ./dotfiles_deploy.yml --ask-sudo-pass -v
 - hosts: localhost
   vars:
     homedir: "{{lookup('env', 'HOME')}}"
@@ -12,11 +12,9 @@
       become: yes
       package: name=git state=present
 
-    # we should remember to add the "/" at the end - for dir creation
     - name: copies .vim dir
       copy: src="{{playbook_dir}}/.vim/" dest="{{homedir}}/.vim/"
 
-    # we should remember to add the "/" at the end - for dir creation
     - name: copies .mybin dir
       copy: src="{{playbook_dir}}/.mybin/" dest="{{homedir}}/.mybin/"
 
