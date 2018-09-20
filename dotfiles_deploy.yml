@@ -12,11 +12,13 @@
       become: yes
       package: name=git state=present
 
+    # we should remember to add the "/" at the end - for dir creation
     - name: copies .vim dir
-      command: cp -r "{{playbook_dir}}/.vim" "{{homedir}}/.vim"
+      copy: src="{{playbook_dir}}/.vim/" dest="{{homedir}}/.vim/"
 
+    # we should remember to add the "/" at the end - for dir creation
     - name: copies .mybin dir
-      command: cp -r "{{playbook_dir}}/.mybin" "{{homedir}}/.vim"
+      copy: src="{{playbook_dir}}/.mybin/" dest="{{homedir}}/.mybin/"
 
     - name: copy .vimrc and .gitconfig
       copy:
