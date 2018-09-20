@@ -62,13 +62,14 @@ nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 :imap <C-t> <Esc>:tabnew<CR>
 
 "treat these file extensions as language specific
-au BufRead,BufNewFile SConstruct set filetype=python   "Scons
-au BufRead,BufNewFile SConscript set filetype=python   "Scons
-au BufRead,BufNewFile *.djhtml set filetype=javascript "Django
-au BufRead,BufNewFile *.rkt,*.rktl set filetype=scheme "Racket
-au BufRead,BufNewFile *.pde set filetype=java          "Processing
+au BufRead,BufNewFile SConstruct set filetype=python     "Scons
+au BufRead,BufNewFile SConscript set filetype=python     "Scons
+au BufRead,BufNewFile *.djhtml set filetype=javascript   "Django
+au BufRead,BufNewFile *.rkt,*.rktl set filetype=scheme   "Racket
+au BufRead,BufNewFile *.pde set filetype=java            "Processing
 au BufRead,BufNewFile *.erb,*.erb.html set filetype=ruby "Rails
-au BufRead,BufNewFile *.pp set filetype=ruby           "Puppet
+au BufRead,BufNewFile *.pp set filetype=ruby             "Puppet
+au BufRead,BufNewFile *.dart set filetype=dart           "Dart
 
 "language specific indentation
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4
