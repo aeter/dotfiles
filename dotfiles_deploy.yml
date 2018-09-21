@@ -1,21 +1,14 @@
-# run with ansible-playbook ./dotfiles_deploy.yml --ask-sudo-pass -v
 - hosts: localhost
   vars:
     homedir: "{{lookup('env', 'HOME')}}"
   tasks:
-    # the dotfiles don't make sense without vim and git installed
-    - name: Ensure vim and git are installed
-      become: yes
-      package: name="{{item}}" state=present
-      with_items:
-        ["vim", "git"]
-
     - name: Copy dotfiles and dirs
       copy: src="{{playbook_dir}}/{{item}}" dest="{{homedir}}/{{item}}"
       with_items:
         [".vim/", ".mybin/", ".vimrc", ".gitconfig"]
 
-    - name: Append contents of .profile to ~/.bashrc
+    - name: Ubuntu | Add contents of .profile to ~/.bashrc
       blockinfile:
         dest: "{{homedir}}/.bashrc"
         block: "{{ lookup('file', '.profile') }}"
+      when: ansible_distribution == 'Ubuntu'
