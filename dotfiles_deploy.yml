@@ -3,12 +3,12 @@
     homedir: "{{lookup('env', 'HOME')}}"
   tasks:
     - name: Copy dotfiles and dirs
-      copy: src="{{playbook_dir}}/{{item}}" dest="{{homedir}}/{{item}}"
+      copy: src="{{playbook_dir}}/home/{{item}}" dest="{{homedir}}/{{item}}"
       with_items:
         [".vim/", ".mybin/", ".vimrc", ".gitconfig"]
 
-    - name: Ubuntu | Add contents of .profile to ~/.bashrc
+    - name: Add contents of .profile to ~/.bashrc (ubuntu)
       blockinfile:
         dest: "{{homedir}}/.bashrc"
-        block: "{{ lookup('file', '.profile') }}"
+        block: "{{ lookup('file', 'home/.profile') }}"
       when: ansible_distribution == 'Ubuntu'
