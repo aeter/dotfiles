@@ -84,3 +84,4 @@ set shiftwidth=4
 set textwidth=80
 set guifont=Menlo:h14
 set nowrap
+set nomodeline "improves security
