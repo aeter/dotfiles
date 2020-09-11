@@ -2,7 +2,7 @@
 export PS1="[\w] "
 
 # colors
-alias ls='ls -G'
+alias ls='ls -G --color'
 alias grep='grep --colour'
 
 # history

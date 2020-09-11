@@ -5,10 +5,10 @@
     - name: Copy dotfiles and dirs
       copy: src="{{playbook_dir}}/home/{{item}}" dest="{{homedir}}/{{item}}"
       with_items:
-        [".gdbinit", ".gitconfig", ".mybin/", "redshift.conf", ".vim/", ".vimrc"]
+        [".config/", ".gdbinit", ".gitconfig", ".mybin/", ".vim/", ".vimrc"]
 
     - name: Add contents of .profile to ~/.bashrc (linux)
       blockinfile:
         dest: "{{homedir}}/.bashrc"
         block: "{{ lookup('file', 'home/.profile') }}"
-      when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Archlinux'
+      when: ansible_os_family == 'Debian' or ansible_distribution == 'Archlinux'
