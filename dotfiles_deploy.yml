@@ -5,7 +5,7 @@
     - name: Copy dotfiles and dirs
       copy: src="{{playbook_dir}}/home/{{item}}" dest="{{homedir}}/{{item}}"
       with_items:
-        [".config/", ".gdbinit", ".gitconfig", ".mybin/", ".vim/", ".vimrc"]
+        [".config/", ".gdbinit", ".gitconfig", ".mybin/", ".vim/", ".vimrc", ".pythonrc"]
 
     - name: Add contents of .profile to ~/.bashrc (linux)
       blockinfile:

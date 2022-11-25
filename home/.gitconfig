@@ -16,7 +16,8 @@
     untracked = cyan
 [alias]
     st = status --untracked-files=no
-    df = diff --name-only
+    d = diff
+    ds = diff --staged
     los = log --stat
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     # Show files ignored by git

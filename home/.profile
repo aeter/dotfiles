@@ -18,5 +18,8 @@ export LANG=en_US.UTF-8
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# python setup
+export PYTHONSTARTUP=$HOME/.pythonrc
+
 # vi mode
 set -o vi
