@@ -6,13 +6,8 @@ set ruler
 " tell vim that the terminal can handle 256 colors
 set t_Co=256
 
-" highlight the trailing whitespace at the end of the lines as 'TODO'
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+"dont hang on long lines due to syntax
+set synmaxcol=200
 
 "Search
 set hlsearch
@@ -36,6 +31,9 @@ filetype on
 filetype plugin indent on
 syntax enable
 
+" highlight trailing whitespace as 'TODO'. needs to be after "syntax enable".
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
 "Spaces instead of tabs
 set expandtab
 set smarttab
@@ -53,14 +51,6 @@ set wildmode=list:longest,full
 "Toggle line numbers and fold column for easy copying"
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
-" tab navigation like firefox
-:nmap <A-Right> :tabnext<CR>
-:imap <A-Right> <Esc>:tabnext<CR>
-:nmap <A-Left> :tabprevious<CR>
-:imap <A-Left> <Esc>:tabprevious<CR>
-:nmap <C-t> :tabnew<CR>
-:imap <C-t> <Esc>:tabnew<CR>
-
 "treat these file extensions as language specific
 au BufRead,BufNewFile SConstruct set filetype=python     "Scons
 au BufRead,BufNewFile SConscript set filetype=python     "Scons
@@ -70,11 +60,16 @@ au BufRead,BufNewFile *.pde set filetype=java            "Processing
 au BufRead,BufNewFile *.erb,*.erb.html set filetype=ruby "Rails
 au BufRead,BufNewFile *.pp set filetype=ruby             "Puppet
 au BufRead,BufNewFile *.dart set filetype=dart           "Dart
+au BufRead,BufNewFile *.zig set filetype=zig             "Zig
+au BufRead,BufNewFile *.nim set filetype=nim             "Nim
 
 "language specific indentation
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype scheme setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" before the "colorscheme", to avoid overriding
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 
 colorscheme jellybeans
 set autoindent
