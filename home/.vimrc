@@ -48,8 +48,8 @@ set wildmode=list:longest,full
 :nmap * *zz
 :nmap # #zz
 
-"Toggle line numbers and fold column for easy copying"
-nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+"Toggle line numbers and fold column for easy copying, by \n
+nnoremap <leader>n :set nonumber!<cr>:set foldcolumn=0<cr>
 
 "treat these file extensions as language specific
 au BufRead,BufNewFile SConstruct set filetype=python     "Scons
