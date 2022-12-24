@@ -48,7 +48,7 @@ set wildmode=list:longest,full
 :nmap * *zz
 :nmap # #zz
 
-"Toggle line numbers and fold column for easy copying, by \n
+"Toggle line numbers and fold column for easy copying, by \-n
 nnoremap <leader>n :set nonumber!<cr>:set foldcolumn=0<cr>
 
 "treat these file extensions as language specific
@@ -80,3 +80,18 @@ set textwidth=80
 set guifont=Menlo:h14
 set nowrap
 set nomodeline "improves security
+
+
+command! -nargs=0 MyJupyterQtConsole call job_start("jupyter qtconsole --JupyterWidget.include_other_output=True")
+function! MyJupyterRunCell()
+    let start_line_num = search('^###', 'b')
+    let end_line_num = search('^###', '')
+    let lines = getline(start_line_num+1, end_line_num-1)
+    let tmp_file = tempname()
+    call writefile(lines, tmp_file)
+    call system('jupyter run --existing --RunApp.kernel_timeout=5 <<< $(cat ' . tmp_file . ')')
+    call system('rm ' . tmp_file)
+    return 1
+endfunction
+nnoremap <silent> <leader>jc :call MyJupyterRunCell()<CR>
+nnoremap <silent> <leader>jqt :MyJupyterQtConsole<CR>
