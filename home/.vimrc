@@ -81,11 +81,17 @@ set guifont=Menlo:h14
 set nowrap
 set nomodeline "improves security
 
+nnoremap <tab> za
+if &foldmethod == 'manual' 
+    set foldmethod=marker foldmarker=#{,#} foldlevel=1 
+endif
 
+nnoremap <silent> <leader>jqt :MyJupyterQtConsole<CR>
+nnoremap <silent> <leader>jc :call MyJupyterRunCell()<CR>
 command! -nargs=0 MyJupyterQtConsole call job_start("jupyter qtconsole --JupyterWidget.include_other_output=True")
 function! MyJupyterRunCell()
-    let start_line_num = search('^###', 'b')
-    let end_line_num = search('^###', '')
+    let start_line_num = search('^#{', 'b')
+    let end_line_num = search('^#}', '')
     let lines = getline(start_line_num+1, end_line_num-1)
     let tmp_file = tempname()
     call writefile(lines, tmp_file)
@@ -93,5 +99,3 @@ function! MyJupyterRunCell()
     call system('rm ' . tmp_file)
     return 1
 endfunction
-nnoremap <silent> <leader>jc :call MyJupyterRunCell()<CR>
-nnoremap <silent> <leader>jqt :MyJupyterQtConsole<CR>
